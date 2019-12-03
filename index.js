@@ -11,6 +11,9 @@ let Quaternion = require('./Classes/Quaternion.js');
 let players = [];
 let sockets = [];
 
+const client = require('redis').createClient(process.env.REDIS_URL);
+
+
 
 io.on('connection', socket => {
     console.log('Connection Made!');
