@@ -54,7 +54,6 @@ io.on('connection', socket => {
         client.get(data.email, (err, reply) => {
             if (reply == null) {
                 socket.emit('loginFailed');
-                console.log("account not found")
                 return;
             } else {
                 let output = JSON.parse(reply);
@@ -68,7 +67,6 @@ io.on('connection', socket => {
                     loginManager.addUser(userID, users[userID], sockets[userID]);
                 } else {
                     socket.emit('loginFailed');
-                    console.log("incorrect password");
                 }
             }
         });
@@ -78,7 +76,6 @@ io.on('connection', socket => {
         let exists = false;
         client.get(data.email, (err, reply) => {
             if (reply != null) {
-                console.log("not null");
                 exists = true;
                 socket.emit('accountAlreadyExists')
                 return;

@@ -6,5 +6,10 @@ module.exports = class User {
         this.password = password;
         this.username = username;
         this.id = shortID.generate();
+        this.friends = [];
+    }
+
+    addFriend(user) {
+        this.friends[user.id] = user;
     }
 }

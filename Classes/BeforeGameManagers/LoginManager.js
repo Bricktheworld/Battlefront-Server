@@ -7,7 +7,12 @@ module.exports = class LoginManager {
     addUser(id, user, socket) {
         this.users[id] = user;
         this.sockets[id] = socket;
+        this.setupSocketEvents(socket);
     }
 
-
+    setupSocketEvents(socket) {
+        socket.on("queueForGame", (data) => {
+            console.log("in q");
+        })
+    }
 }
