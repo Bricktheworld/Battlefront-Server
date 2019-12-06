@@ -1,11 +1,11 @@
-const shortID = require('shortid');
 const Vector3 = require('./Vector3.js');
 const Quaternion = require('./Quaternion.js');
 
 
 module.exports = class Player {
-    constructor() {
-        this.username = '';
+    constructor(id, username) {
+        this.username = username;
+        this.id = id;
         this.team = null
         this.position = new Vector3(0, 0, 0);
         this.x = 0;
@@ -17,15 +17,10 @@ module.exports = class Player {
         this.rotW = 0;
         this.lookRotation = new Quaternion(0, 0, 0, 0)
         this.movementDirection = new Vector3(0, 0, 0);
-        this.id = shortID.generate();
     }
 
     setTeam(team) {
         this.team = team;
-    }
-
-    setUsername(username) {
-        this.username = username;
     }
 
     setPosition(x, y, z) {
